@@ -4,11 +4,9 @@ import java.util.List;
 
 import br.com.app.domain.mysql.entity.Jogo;
 import br.com.app.domain.mysql.service.JogoService;
+import ch.qos.logback.classic.boolex.GEventEvaluator;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/jogo")
@@ -31,4 +29,13 @@ public class JogoController {
         return jogoService.findAll();
     }
 
+    @RequestMapping(value = "/deletar", method = RequestMethod.DELETE)
+    public void deleta(@RequestParam(name = "id") Long id) {
+        jogoService.delete(id);
+    }
+
+    @RequestMapping(value = "/encontrar-por-id", method = RequestMethod.GET)
+    public Jogo encontrarPorId(@RequestParam(name = "id") Long id) {
+        return jogoService.findById(id);
+    }
 }

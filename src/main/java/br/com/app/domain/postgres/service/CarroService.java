@@ -1,23 +1,22 @@
-package br.com.app.domain.mysql.service;
+package br.com.app.domain.postgres.service;
 
-import java.util.List;
-
-import br.com.app.domain.mysql.entity.Jogo;
-import br.com.app.domain.mysql.repository.JogoRepository;
+import br.com.app.domain.postgres.entity.Carro;
+import br.com.app.domain.postgres.repository.CarroRepository;
 import br.com.app.domain.utils.BasicCrudService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
-public class JogoService implements BasicCrudService<Jogo, Long> {
+public class CarroService implements BasicCrudService<Carro, Long> {
 
     @Autowired
-    private JogoRepository repo;
+    private CarroRepository repo;
 
     @Override
-    public void save(Jogo toSave) {
+    public void save(Carro toSave) {
         repo.save(toSave);
-
     }
 
     @Override
@@ -26,13 +25,12 @@ public class JogoService implements BasicCrudService<Jogo, Long> {
     }
 
     @Override
-    public Jogo findById(Long id) {
+    public Carro findById(Long id) {
         return repo.findById(id).orElse(null);
     }
 
     @Override
-    public List<Jogo> findAll() {
+    public List<Carro> findAll() {
         return repo.findAll();
     }
-
 }

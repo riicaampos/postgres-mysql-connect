@@ -12,7 +12,7 @@ public interface BasicCrudService <O,I> {
 
     public void save(O toSave);
 
-    public void delete(I toDelete);
+    public void delete(I id);
 
     public O findById(I id);
 
